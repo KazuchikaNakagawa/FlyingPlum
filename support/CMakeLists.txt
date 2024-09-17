@@ -1,0 +1,1 @@
+add_library(FlyPlumSupport STATIC sourcelocation.cpp)

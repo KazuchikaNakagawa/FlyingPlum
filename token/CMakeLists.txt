@@ -1,0 +1,2 @@
+add_library(FlyPlumToken STATIC token.cpp)
+target_link_libraries(FlyPlumToken PUBLIC FlyPlumSupport)

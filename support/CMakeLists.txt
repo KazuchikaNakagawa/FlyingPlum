@@ -1,1 +1,1 @@
-add_library(FlyPlumSupport STATIC sourcelocation.cpp)
+add_library(FlyPlumSupport STATIC sourcelocation.cpp u8utils.cpp)

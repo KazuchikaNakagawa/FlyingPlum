@@ -1,5 +1,4 @@
 #include "support/u8utils.h"
-#include <__fwd/string.h>
 
 namespace flyplum {
 

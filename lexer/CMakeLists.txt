@@ -1,1 +1,2 @@
-add_library(FlyPlumLexer STATIC dummy.cpp)
+add_library(FlyPlumLexer STATIC lexer.cpp)
+target_link_libraries(FlyPlumLexer PUBLIC FlyPlumSupport FlyPlumToken)

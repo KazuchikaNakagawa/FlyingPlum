@@ -12,6 +12,11 @@ Token* Token::create()
 
 Token* Token::addStringToken(std::u8string value, SourceLocation location)
 {
+    // そもそもこのトークンが末端でない場合はエラー
+    if (this->kind != TokenKind::kEndOfFile) {
+        std::cerr << "this token cannot be added" << std::endl;
+        std::exit(1);
+    }
     // 文字を持つトークンなのでヒープに確保
     // このトークンが削除されるときに文字列も削除される
     auto* heapString = new std::u8string(value);

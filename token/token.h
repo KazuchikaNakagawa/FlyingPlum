@@ -77,7 +77,7 @@ public:
     /* トークンの値の取得 */
     /* 失敗する場合はその旨を書いてstd::exit(1)　*/
     std::u8string& getStringValue() const;
-    // TODO: ３つ実装頼んだ
+    // TODO: ２つ実装頼んだ
     std::int64_t getIntegerValue() const;
     double getFloatValue() const;
 

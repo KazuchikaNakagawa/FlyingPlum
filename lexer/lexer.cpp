@@ -15,7 +15,7 @@ Lexer::Lexer(std::u8string source)
 
 Token* Lexer::lex()
 {
-    // TODO: 実装頼む
+    // TODO: 実装頼む  
 }
 
 }

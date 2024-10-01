@@ -26,6 +26,11 @@ Token* Token::addStringToken(std::u8string value, SourceLocation location)
     return newToken;
 }
 
+Token* addIntegerToken(std::int64_t value, SourceLocation location)
+{
+    
+}
+
 Token::~Token()
 {
     if (this->kind == TokenKind::kString

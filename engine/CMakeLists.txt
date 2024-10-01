@@ -1,3 +1,3 @@
 
 
-add_library(FlyPlumEngine STATIC dummy.cpp)
+add_library(FlyPlumEngine STATIC value.cpp)

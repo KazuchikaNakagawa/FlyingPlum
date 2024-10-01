@@ -1,4 +1,5 @@
 #include "lexer/lexer.h"
+#include "token/token.h"
 #include <iostream>
 
 namespace flyplum {

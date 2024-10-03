@@ -36,6 +36,28 @@ public:
 
     std::u8string toString() const;
 
+    std::int64_t getInteger() const
+    {
+        return *reinterpret_cast<std::int64_t*>(value >> 3 << 3);
+    }
+
+    double getFloat() const
+    {
+        return *reinterpret_cast<double*>(value >> 3 << 3);
+    }
+
+    std::u8string getString() const
+    {
+        return *reinterpret_cast<std::u8string*>(value >> 3 << 3);
+    }
+
+    // move constructor
+    FlyPlumValue(FlyPlumValue&& other)
+        : value(other.value)
+    {
+        other.value = 0;
+    }
+
     ~FlyPlumValue();
 };
 

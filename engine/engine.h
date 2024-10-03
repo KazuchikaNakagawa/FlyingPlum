@@ -10,6 +10,13 @@ class Engine {
 
 public:
     Engine() { }
+    void push(FlyPlumValue value) { stack.push(value); }
+    FlyPlumValue pop()
+    {
+        FlyPlumValue value(stack.top());
+        stack.pop();
+        return value;
+    }
     ~Engine() { }
 };
 

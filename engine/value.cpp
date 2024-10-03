@@ -1,4 +1,5 @@
 #include "engine/value.h"
+#include "support/u8utils.h"
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -30,8 +31,9 @@ FlyPlumValue::~FlyPlumValue()
         delete reinterpret_cast<std::u8string*>(value >> 3 << 3);
         break;
     default:
-        std::cerr << "Error: unknown type" << std::endl;
-        std::exit(1);
+        // オブジェクトなのでdeinitを呼びたいが
+        // 今はnullptrなので何もしない
+        break;
     }
 }
 
@@ -54,7 +56,8 @@ std::u8string FlyPlumValue::toString() const
     }
     // address data
     std::uint64_t addr = value >> 3 << 3;
-    std::u8string addrData = to_u8string(addr, 16);
+    std::u8string addrData = flyplum::to_u8string(addr, 16);
+    return u8"FlyPlumValue(" + typeData + u8", " + addrData + u8")";
 }
 
 } // namespace flyplum

@@ -26,9 +26,18 @@ Token* Token::addStringToken(std::u8string value, SourceLocation location)
     return newToken;
 }
 
-Token* addIntegerToken(std::int64_t value, SourceLocation location)
+Token* Token::addIntegerToken(std::int64_t value, SourceLocation location)
 {
-    
+    // そもそもこのトークンが末端でない場合はエラー
+    if (this->kind != TokenKind::kEndOfFile) {
+        std::cerr << "this token cannot be added" << std::endl;
+        std::exit(1);
+    }
+
+    auto* newToken = new Token(this, this->prev, TokenKind::kString, { .integerValue = value }, location);
+    this->prev->next = newToken;
+    this->prev = newToken;
+    return newToken;
 }
 
 Token::~Token()

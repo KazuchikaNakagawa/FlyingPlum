@@ -7,7 +7,7 @@
 
 namespace flyplum {
 
-extern std::u8string to_u8string(std::uint64_t value);
+extern std::u8string to_u8string(std::uint64_t value, int base = 10);
 extern std::ostream& operator<<(std::ostream& stream, std::u8string value);
 
 }

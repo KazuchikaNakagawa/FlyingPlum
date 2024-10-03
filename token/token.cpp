@@ -34,7 +34,69 @@ Token* Token::addIntegerToken(std::int64_t value, SourceLocation location)
         std::exit(1);
     }
 
-    auto* newToken = new Token(this, this->prev, TokenKind::kString, { .integerValue = value }, location);
+    auto* newToken = new Token(this, this->prev, TokenKind::kInteger, { .integerValue = value }, location);
+    this->prev->next = newToken;
+    this->prev = newToken;
+    return newToken;
+}
+
+Token* Token::addFloatToken(double value, SourceLocation location)
+{
+    // そもそもこのトークンが末端でない場合はエラー
+    if (this->kind != TokenKind::kEndOfFile) {
+        std::cerr << "this token cannot be added" << std::endl;
+        std::exit(1);
+    }
+
+    auto* newToken = new Token(this, this->prev, TokenKind::kFloat, { .floatValue = value }, location);
+    this->prev->next = newToken;
+    this->prev = newToken;
+    return newToken;
+}
+
+Token* Token::addSymbolToken(std::u8string value, SourceLocation location)
+{
+    // そもそもこのトークンが末端でない場合はエラー
+    if (this->kind != TokenKind::kEndOfFile) {
+        std::cerr << "this token cannot be added" << std::endl;
+        std::exit(1);
+    }
+    // 文字を持つトークンなのでヒープに確保
+    // このトークンが削除されるときに文字列も削除される
+    auto* heapString = new std::u8string(value);
+    auto* newToken = new Token(this, this->prev, TokenKind::kSymbol, { .stringValue = heapString }, location);
+    this->prev->next = newToken;
+    this->prev = newToken;
+    return newToken;
+}
+
+Token* Token::addKeywordToken(std::u8string value, SourceLocation location)
+{
+    // そもそもこのトークンが末端でない場合はエラー
+    if (this->kind != TokenKind::kEndOfFile) {
+        std::cerr << "this token cannot be added" << std::endl;
+        std::exit(1);
+    }
+    // 文字を持つトークンなのでヒープに確保
+    // このトークンが削除されるときに文字列も削除される
+    auto* heapString = new std::u8string(value);
+    auto* newToken = new Token(this, this->prev, TokenKind::kKeyword, { .stringValue = heapString }, location);
+    this->prev->next = newToken;
+    this->prev = newToken;
+    return newToken;
+}
+
+Token* Token::addIdentifierToken(std::u8string value, SourceLocation location)
+{
+    // そもそもこのトークンが末端でない場合はエラー
+    if (this->kind != TokenKind::kEndOfFile) {
+        std::cerr << "this token cannot be added" << std::endl;
+        std::exit(1);
+    }
+    // 文字を持つトークンなのでヒープに確保
+    // このトークンが削除されるときに文字列も削除される
+    auto* heapString = new std::u8string(value);
+    auto* newToken = new Token(this, this->prev, TokenKind::kIdentifier, { .stringValue = heapString }, location);
     this->prev->next = newToken;
     this->prev = newToken;
     return newToken;

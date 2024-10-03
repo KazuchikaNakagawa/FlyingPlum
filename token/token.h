@@ -61,7 +61,6 @@ public:
 
     /* トークンの生成 */
     Token* addStringToken(std::u8string value, SourceLocation location);
-    // TODO: 5つは実装頼んだ
     Token* addIntegerToken(std::int64_t value, SourceLocation location);
     Token* addFloatToken(double value, SourceLocation location);
     Token* addSymbolToken(std::u8string value, SourceLocation location);

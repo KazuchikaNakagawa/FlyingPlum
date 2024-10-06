@@ -133,4 +133,27 @@ std::u8string& Token::getStringValue() const
     std::exit(1);
 }
 
+std::int64_t Token::getIntegerValue() const
+{
+    if(this->kind == TokenKind::kInteger){
+        return this->value.integerValue;
+    }
+    std::cerr << "Token is not integer." << std::endl;
+    std::exit(1);
+}
+
+double Token::getFloatValue() const
+{
+    if(this->kind == TokenKind::kFloat){
+        return this->value.floatValue;
+    }
+    std::cerr << "Token is not float." << std::endl;
+    std::exit(1);
+}
+
+std::u8string Token::toString() const
+{
+    
+}
+
 } // namespace flyplum

@@ -1,6 +1,7 @@
 #include "lexer/lexer.h"
 #include "token/token.h"
 #include <iostream>
+#include <string>
 
 namespace flyplum {
 
@@ -16,7 +17,14 @@ Lexer::Lexer(std::u8string source)
 
 Token* Lexer::lex()
 {
-    // TODO: 実装頼む  
+    char ch;
+    int lineCounter = 0;
+    while(file.get(ch)){
+        if(ch == '\n'){
+            lineCounter++;
+        }
+    }
+    file.close();
 }
 
 }

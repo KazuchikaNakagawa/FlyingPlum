@@ -18,6 +18,7 @@ Lexer::Lexer(std::u8string source)
 Token* Lexer::lex()
 {
     char ch;
+    char *str = NULL;
     int lineCounter = 0;
     while(file.get(ch)){
         if(ch == '\n'){
